@@ -8,3 +8,7 @@
 - View the supported events in [our `get_event_function_map` function](/src/transformer/get_event_function_map.php).
 - Change existing statements for the supported events using [our change statements guide](/docs/change-statements.md).
 - Create statements using [our new statements guide](/docs/new-statements.md).
+
+# In this Fork 2 changes
+- Add username when mbox (email) is selected
+- Load only if verb is COMPLETED
