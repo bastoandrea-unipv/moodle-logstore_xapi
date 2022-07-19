@@ -24,7 +24,16 @@ function load_batch(array $config, array $transformedevents, callable $loader) {
             $eventstatements = $transformedevent['statements'];
             return array_merge($result, $eventstatements);
         }, []);
-        $loader($config, $statements);
+/* LOAD ONLY STATEMENTS WITH VERB COMPLETED */
+	$array_out=array();
+	foreach ($statements as $key => $sms) {
+	    if ($sms['verb']['id'] == 'http://adlnet.gov/expapi/verbs/completed') {
+	        array_push($array_out,$sms);
+	    }
+	}
+        //$loader($config, $statements);
+        $loader($config, $array_out); 
+/* THE END */
         $loadedevents = construct_loaded_events($transformedevents, true);
         return $loadedevents;
     } catch (\Exception $e) {
